@@ -5,6 +5,7 @@ package com.salvador.thiago.taskManagerApiRest.resouce;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.salvador.thiago.taskManagerApiRest.domain.Task;
+import com.salvador.thiago.taskManagerApiRest.dto.TaskDto;
 import com.salvador.thiago.taskManagerApiRest.service.TaskService;
 
 /**
@@ -59,19 +61,21 @@ public class TaskResource {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Task>> findAll(){
+	public ResponseEntity<List<TaskDto>> findAll(){
 		List<Task> list = service.findAll();
-		return ResponseEntity.ok().body(list);
+		List<TaskDto> listDto = list.stream().map(obj -> new TaskDto(obj)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDto);
 	}
 	
 	@RequestMapping(value = "/page",method = RequestMethod.GET)
-	public ResponseEntity<Page<Task>> findPage(
+	public ResponseEntity<Page<TaskDto>> findPage(
 			@RequestParam(value = "page", defaultValue = "0") Integer page, 
 			@RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage, 
 			@RequestParam(value = "orderBy", defaultValue = "current") String orderBy, 
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction) {
 		Page<Task> list = service.findPage(page, linesPerPage, orderBy, direction);
-		return ResponseEntity.ok().body(list);
+		Page<TaskDto> listDto = list.map(obj -> new TaskDto(obj));
+		return ResponseEntity.ok().body(listDto);
 	}
 	
 }
