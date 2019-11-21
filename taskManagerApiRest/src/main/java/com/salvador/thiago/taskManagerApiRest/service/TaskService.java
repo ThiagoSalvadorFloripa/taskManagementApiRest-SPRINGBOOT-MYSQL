@@ -3,6 +3,7 @@
  */
 package com.salvador.thiago.taskManagerApiRest.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,10 @@ public class TaskService {
 		Optional<Task> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Object not found! id: "+ id + ", type" + Task.class.getName()));
-				
+	}
+
+	public List<Task> findAll() {
+		return repository.findAll();
 	}
 
 }
