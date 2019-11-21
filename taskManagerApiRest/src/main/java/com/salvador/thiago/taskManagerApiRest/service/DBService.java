@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.salvador.thiago.taskManagerApiRest.configEnvironment;
+package com.salvador.thiago.taskManagerApiRest.service;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -21,7 +21,6 @@ public class DBService {
 	
 	@Autowired
 	private TaskRepository repository;
-	
 	
 	
 	public void instantiateDevDataBase() {

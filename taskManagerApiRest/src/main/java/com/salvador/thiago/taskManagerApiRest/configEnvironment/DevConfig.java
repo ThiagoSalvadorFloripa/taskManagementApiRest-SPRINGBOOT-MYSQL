@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.salvador.thiago.taskManagerApiRest.service.DBService;
+
 /**
  * @author Thiago Salvador - thiago.salvadorpower@gmail.com
  */
