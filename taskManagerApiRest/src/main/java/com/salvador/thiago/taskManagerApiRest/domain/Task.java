@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 /**
  * @author Thiago Salvador - thiago.salvadorpower@gmail.com
@@ -30,11 +32,11 @@ public class Task implements Serializable {
 	private String description;
 	
 	private Boolean status;
-	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date dateCreated;
-	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date dateChange;
-	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date dateDeleted;
 	
 	public Task() {
