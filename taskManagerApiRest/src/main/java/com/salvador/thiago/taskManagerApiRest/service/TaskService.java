@@ -43,4 +43,14 @@ public class TaskService {
 		return repository.findAll(pageRequest);
 	}
 
+	public Task insert(Task obj) {
+		obj.setId(null);
+		return repository.save(obj);
+	}
+
+	public Task update(Task obj) {
+		this.findById(obj.getId());
+		return repository.save(obj);
+	}
+
 }
