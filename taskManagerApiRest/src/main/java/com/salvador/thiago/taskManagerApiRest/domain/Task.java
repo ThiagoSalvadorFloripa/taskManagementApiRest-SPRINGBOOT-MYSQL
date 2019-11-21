@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 /**
  * @author Thiago Salvador - thiago.salvadorpower@gmail.com
@@ -28,8 +30,11 @@ public class Task implements Serializable {
 	private String description;
 	
 	private Boolean status;
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	private Date dateCreated;
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	private Date dateChange;
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	private Date dateDeleted;
 	
 	public Task() {

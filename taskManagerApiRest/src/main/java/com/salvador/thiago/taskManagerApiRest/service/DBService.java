@@ -27,8 +27,9 @@ public class DBService {
 		Task task0 = new Task(null,"title0", "description", true, new Date(),new Date(),new Date() );
 		Task task1 = new Task(null,"title1", "description", true, new Date(),new Date(),new Date() );
 		Task task2 = new Task(null,"title2", "description", true, new Date(),new Date(),new Date() );
-		
-		repository.saveAll(Arrays.asList(task0,task1,task2));
+		Task task3 = new Task(null,"title3", "description", true, new Date(),new Date(),new Date() );
+
+		repository.saveAll(Arrays.asList(task0,task1,task2, task3));
 		
 		
 		
