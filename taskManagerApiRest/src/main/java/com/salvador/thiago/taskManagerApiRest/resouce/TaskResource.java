@@ -74,7 +74,4 @@ public class TaskResource {
 		return ResponseEntity.ok().body(list);
 	}
 	
-	
-	
-
 }

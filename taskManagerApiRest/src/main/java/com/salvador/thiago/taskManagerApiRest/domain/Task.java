@@ -1,12 +1,24 @@
 package com.salvador.thiago.taskManagerApiRest.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
- * @author thiagosalvador
+ * @author Thiago Salvador - thiago.salvadorpower@gmail.com
  */
-public class Task {
+
+@Entity
+public class Task implements Serializable {
 	
+	private static final long serialVersionUID = 4393975235067312189L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	private String description;
@@ -17,7 +29,11 @@ public class Task {
 	
 	public Task() {
 	}
-	
+
+	public Task(Long id) {
+		this.id = id;
+	}
+
 	public Task(Long id, String title, String description, Boolean status, Date dateCreated, Date dateChange,
 			Date dateDeleted) {
 		super();
