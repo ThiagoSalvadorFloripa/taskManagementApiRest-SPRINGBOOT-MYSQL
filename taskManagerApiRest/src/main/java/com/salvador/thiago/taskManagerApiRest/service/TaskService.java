@@ -53,4 +53,9 @@ public class TaskService {
 		return repository.save(obj);
 	}
 
+	public void deleteById(Long id) {
+		this.findById(id);
+		repository.deleteById(id);
+	}
+
 }

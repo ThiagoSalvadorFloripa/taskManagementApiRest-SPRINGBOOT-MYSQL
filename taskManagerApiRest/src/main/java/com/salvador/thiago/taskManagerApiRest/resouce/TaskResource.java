@@ -46,6 +46,12 @@ public class TaskResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable Long id){
+		service.deleteById(id);
+		return ResponseEntity.noContent().build();
+	}
+	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Task> findById(@PathVariable Long id){
 		Task obj = service.findById(id);
