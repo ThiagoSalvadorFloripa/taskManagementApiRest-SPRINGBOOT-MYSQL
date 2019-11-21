@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 /**
  * @author Thiago Salvador - thiago.salvadorpower@gmail.com
@@ -20,8 +21,12 @@ public class Task implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotEmpty(message = "{title.not.blank}")
 	private String title;
+	@NotEmpty(message = "{description.not.blank}")
 	private String description;
+	
 	private Boolean status;
 	private Date dateCreated;
 	private Date dateChange;
