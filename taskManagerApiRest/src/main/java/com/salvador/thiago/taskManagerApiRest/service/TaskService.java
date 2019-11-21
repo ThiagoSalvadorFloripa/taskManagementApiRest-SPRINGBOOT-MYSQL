@@ -16,8 +16,7 @@ import com.salvador.thiago.taskManagerApiRest.domain.Task;
 import com.salvador.thiago.taskManagerApiRest.repository.TaskRepository;
 
 /**
- * @author thiagosalvador
- *
+ * @author Thiago Salvador - thiago.salvadorpower@gmail.com
  */
 
 @Service
@@ -26,8 +25,6 @@ public class TaskService {
 	@Autowired
 	private TaskRepository repository;
 	
-	
-
 	public Task findById(Long id) {
 		Optional<Task> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
