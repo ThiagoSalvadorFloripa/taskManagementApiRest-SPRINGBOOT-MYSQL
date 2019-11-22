@@ -49,8 +49,8 @@ public class TaskResource {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> delete(@PathVariable Long id){
-		service.deleteById(id);
+	public ResponseEntity<Void> delete(@RequestBody Task obj, @PathVariable Long id){
+		service.deleteById(obj);
 		return ResponseEntity.noContent().build();
 	}
 	

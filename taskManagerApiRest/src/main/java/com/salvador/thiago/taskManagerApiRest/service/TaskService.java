@@ -3,6 +3,7 @@
  */
 package com.salvador.thiago.taskManagerApiRest.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,17 +49,19 @@ public class TaskService {
 		} catch (DataIntegrityViolationException e) {
 			throw new DataIntegrityException("Error trying to save, possible null values exist");
 		}
-
 	}
 
 	public Task update(Task obj) {
-		this.findById(obj.getId());
+		obj.setDateChange(new Date());
 		return repository.save(obj);
 	}
 
-	public void deleteById(Long id) {
-		this.findById(id);
-		repository.deleteById(id);
+	public Task deleteById(Task obj) {
+		obj.setDateDeleted(new Date());
+		obj.setStatus(false);
+		
+		return repository.save(obj);
+		
 	}
 
 }
