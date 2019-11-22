@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.salvador.thiago.taskManagerApiRest.configEnvironment;
+package com.salvador.thiago.taskManagerApiRest.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
