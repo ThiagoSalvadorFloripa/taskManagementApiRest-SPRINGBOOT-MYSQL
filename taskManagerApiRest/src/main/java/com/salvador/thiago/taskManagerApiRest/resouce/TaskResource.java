@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.salvador.thiago.taskManagerApiRest.resouce;
 
 import java.net.URI;
@@ -9,6 +7,7 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import org.modelmapper.ConfigurationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -29,8 +28,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 /**
+ * <p>Note:Class responsible for consuming and 
+ * producing data via Http protocol
+ * </p>
  * @author Thiago Salvador - thiago.salvadorpower@gmail.com
  */
+
 @CrossOrigin(origins = "*")
 @Api(value="REST API Task Management")
 @RestController
@@ -40,6 +43,16 @@ public class TaskResource {
 	@Autowired
 	private TaskService service;
 	
+	
+	/**
+	   * <p>Method responsible for receiving of front a POST of 
+	   * protocol HTTP with data type
+	   * Json and send to next validation layer
+	   * <p>
+	   *  
+	   * @param Object TaskDto
+	   * @return ResponseEntity
+	   */
 	@ApiOperation(value="Salva uma tarefa")
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody @Valid TaskDto objDto) {
@@ -49,6 +62,16 @@ public class TaskResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	/**
+	   * <p>Method responsible for receiving of front a PUT of
+	   *  protocol HTTP type data
+	   *  Json and send to next validation layer
+	   *  <p>
+	   *  
+	   * @param  TaskDto
+	   * @param  id
+	   * @return ResponseEntity
+	   */
 	@ApiOperation(value="Atualiza uma tarefa")
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody @Valid TaskDto objDto, @PathVariable Long id) {
@@ -56,6 +79,16 @@ public class TaskResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	/**
+	   * <p>Method responsible for receiving of front a DELETE of
+	   *  protocol HTTP type
+	   *  Json and send to next validation layer
+	   *  <p>
+	   *  
+	   * @param  TaskDto
+	   * @param  id
+	   * @return ResponseEntity
+	   */
 	@ApiOperation(value="Deleta uma tarefa")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@RequestBody TaskDto objDto, @PathVariable Long id){
@@ -63,6 +96,14 @@ public class TaskResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	/**
+	   * <p>Method responsible for receiving of front a GET of
+	   *  protocol HTTP data type
+	   *  Json and send to next validation layer<p>
+	   *  
+	   * @param  id
+	   * @return ResponseEntity<TaskDto>
+	   */
 	@ApiOperation(value="Busca uma tarefa por ID")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<TaskDto> findById(@PathVariable Long id){
@@ -70,6 +111,13 @@ public class TaskResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	/**
+	   * <p>Method responsible for receiving of front a GET of
+	   *  protocol HTTP data type
+	   *  Json and send to next validation layer<p>
+	   *  
+	   * @return ResponseEntity<List<TaskDto>> 
+	   */
 	@ApiOperation(value="Busca todas tarefas")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<TaskDto>> findAll(){
@@ -77,6 +125,12 @@ public class TaskResource {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
+	/**
+	   * <p>Method responsible for receiving of front a GET type
+	   *  Json and send to next validation layer<p>
+	   * 
+	   * @return ResponseEntity<Page<TaskDto>>
+	   */
 	@ApiOperation(value="Busca tarefas paginadas")
 	@RequestMapping(value = "/page",method = RequestMethod.GET)
 	public ResponseEntity<Page<TaskDto>> findPage(
