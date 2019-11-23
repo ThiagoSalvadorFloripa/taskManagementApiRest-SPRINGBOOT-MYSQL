@@ -7,6 +7,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +34,7 @@ import io.swagger.annotations.ApiOperation;
 @CrossOrigin(origins = "*")
 @Api(value="REST API Task Management")
 @RestController
-@RequestMapping(value = "/task")
+@RequestMapping(value = "/tasks")
 public class TaskResource {
 	
 	@Autowired
@@ -40,8 +42,8 @@ public class TaskResource {
 	
 	@ApiOperation(value="Salva uma tarefa")
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Task obj) {
-		obj = service.insert(obj);
+	public ResponseEntity<Void> insert(@RequestBody @Valid TaskDto objDto) {
+		Task obj = service.insert(objDto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
@@ -49,31 +51,29 @@ public class TaskResource {
 	
 	@ApiOperation(value="Atualiza uma tarefa")
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Task obj, @PathVariable Long id) {
-		obj.setId(id);
-		obj = service.update(obj);
+	public ResponseEntity<Void> update(@RequestBody @Valid TaskDto objDto, @PathVariable Long id) {
+		service.update(objDto, id);
 		return ResponseEntity.noContent().build();
 	}
 	
 	@ApiOperation(value="Deleta uma tarefa")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> delete(@RequestBody Task obj, @PathVariable Long id){
-		service.deleteById(obj);
+	public ResponseEntity<Void> delete(@RequestBody TaskDto objDto, @PathVariable Long id){
+		service.deleteById(objDto, id);
 		return ResponseEntity.noContent().build();
 	}
 	
 	@ApiOperation(value="Busca uma tarefa por ID")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Task> findById(@PathVariable Long id){
-		Task obj = service.findById(id);
+	public ResponseEntity<TaskDto> findById(@PathVariable Long id){
+		TaskDto obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@ApiOperation(value="Busca todas tarefas")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<TaskDto>> findAll(){
-		List<Task> list = service.findAll();
-		List<TaskDto> listDto = list.stream().map(obj -> new TaskDto(obj)).collect(Collectors.toList());
+		List<TaskDto> listDto = service.findAll();
 		return ResponseEntity.ok().body(listDto);
 	}
 	
@@ -84,8 +84,7 @@ public class TaskResource {
 			@RequestParam(value = "linesPerPage", defaultValue = "24") Integer linesPerPage, 
 			@RequestParam(value = "orderBy", defaultValue = "current") String orderBy, 
 			@RequestParam(value = "direction", defaultValue = "ASC")String direction) {
-		Page<Task> list = service.findPage(page, linesPerPage, orderBy, direction);
-		Page<TaskDto> listDto = list.map(obj -> new TaskDto(obj));
+		Page<TaskDto> listDto = service.findPage(page, linesPerPage, orderBy, direction);
 		return ResponseEntity.ok().body(listDto);
 	}
 	

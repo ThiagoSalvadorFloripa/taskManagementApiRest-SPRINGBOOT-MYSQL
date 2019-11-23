@@ -26,11 +26,9 @@ public class Task implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty(message = "{title.not.blank}")
-	private String title;
-	@NotEmpty(message = "{description.not.blank}")
-	private String description;
 	
+	private String title;
+	private String description;
 	private Boolean status;
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date dateCreated;

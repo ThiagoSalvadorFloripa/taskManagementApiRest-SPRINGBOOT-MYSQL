@@ -4,34 +4,43 @@
 package com.salvador.thiago.taskManagerApiRest.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 
-import com.salvador.thiago.taskManagerApiRest.domain.Task;
+import javax.validation.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * @author Thiago Salvador - thiago.salvadorpower@gmail.com
  */
+
 public class TaskDto implements Serializable {
 
 	private static final long serialVersionUID = 2833818054900146733L;
 	
+	private Long id;
+	@NotEmpty(message = "Title must not be null")
 	private String title;
+	@NotEmpty(message = "Description must not be null")
 	private String description;
 	private Boolean status;
-	private String dateCreated;
-	private String dateChange;
-	private String dateDeleted;
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss" ,locale = "pt_BR")
+	private Date dateCreated;
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",locale = "pt_BR")
+	private Date dateChange;
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",locale = "pt_BR")
+	private Date dateDeleted;
 	
 	public TaskDto() {
 		
 	}
 	
-	public TaskDto( Task task) {
-		this.title = task.getTitle();
-		this.description = task.getDescription();
-		this.status = task.getStatus();
-		this.dateCreated = task.getDateCreated().toString();
-		this.dateChange = task.getDateChange().toString();
-		this.dateDeleted = task.getDateDeleted().toString();
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -58,29 +67,31 @@ public class TaskDto implements Serializable {
 		this.status = status;
 	}
 
-	public String getDateCreated() {
+	public Date getDateCreated() {
 		return dateCreated;
 	}
 
-	public void setDateCreated(String dateCreated) {
+	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
-	public String getDateChange() {
+	public Date getDateChange() {
 		return dateChange;
 	}
 
-	public void setDateChange(String dateChange) {
+	public void setDateChange(Date dateChange) {
 		this.dateChange = dateChange;
 	}
 
-	public String getDateDeleted() {
+	public Date getDateDeleted() {
 		return dateDeleted;
 	}
 
-	public void setDateDeleted(String dateDeleted) {
+	public void setDateDeleted(Date dateDeleted) {
 		this.dateDeleted = dateDeleted;
 	}
+
+	
 	
 	
 	
