@@ -7,7 +7,6 @@ import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
@@ -137,8 +136,8 @@ public class TaskService {
 	   * @param TaskDto, Long id
 	   * @return Task
 	   */
-	public Task deleteById(TaskDto objDto, Long id) {
-		Task task = modelMapper.map(objDto, Task.class);
+	public Task deleteById(Long id) {
+		Task task = this.findByIdEntity(id);
 		task.setDateDeleted(new Date());
 		task.setStatus(false);
 		return repository.save(task);

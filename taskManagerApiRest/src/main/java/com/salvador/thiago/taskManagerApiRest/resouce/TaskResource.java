@@ -53,7 +53,7 @@ public class TaskResource {
 	   * @param Object TaskDto
 	   * @return ResponseEntity
 	   */
-	@ApiOperation(value="Salva uma tarefa")
+	@ApiOperation(value="Save a task")
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody @Valid TaskDto objDto) {
 		Task obj = service.insert(objDto);
@@ -72,9 +72,9 @@ public class TaskResource {
 	   * @param  id
 	   * @return ResponseEntity
 	   */
-	@ApiOperation(value="Atualiza uma tarefa")
+	@ApiOperation(value="Update a task")
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody @Valid TaskDto objDto, @PathVariable Long id) {
+	public ResponseEntity<Void> update( @PathVariable("id") Long id, @RequestBody @Valid TaskDto objDto) {
 		service.update(objDto, id);
 		return ResponseEntity.noContent().build();
 	}
@@ -89,10 +89,10 @@ public class TaskResource {
 	   * @param  id
 	   * @return ResponseEntity
 	   */
-	@ApiOperation(value="Deleta uma tarefa")
+	@ApiOperation(value="Delete a task")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> delete(@RequestBody TaskDto objDto, @PathVariable Long id){
-		service.deleteById(objDto, id);
+	public ResponseEntity<Void> delete(@PathVariable("id") Long id){
+		service.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
 	
@@ -104,7 +104,7 @@ public class TaskResource {
 	   * @param  id
 	   * @return ResponseEntity<TaskDto>
 	   */
-	@ApiOperation(value="Busca uma tarefa por ID")
+	@ApiOperation(value="Search for a task by ID")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<TaskDto> findById(@PathVariable Long id){
 		TaskDto obj = service.findById(id);
@@ -118,7 +118,7 @@ public class TaskResource {
 	   *  
 	   * @return ResponseEntity<List<TaskDto>> 
 	   */
-	@ApiOperation(value="Busca todas tarefas")
+	@ApiOperation(value="Search all tasks")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<TaskDto>> findAll(){
 		List<TaskDto> listDto = service.findAll();
@@ -131,7 +131,7 @@ public class TaskResource {
 	   * 
 	   * @return ResponseEntity<Page<TaskDto>>
 	   */
-	@ApiOperation(value="Busca tarefas paginadas")
+	@ApiOperation(value="Search paginated tasks")
 	@RequestMapping(value = "/page",method = RequestMethod.GET)
 	public ResponseEntity<Page<TaskDto>> findPage(
 			@RequestParam(value = "page", defaultValue = "0") Integer page, 
