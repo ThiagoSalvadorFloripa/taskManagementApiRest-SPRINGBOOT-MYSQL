@@ -103,7 +103,8 @@ java -jar nameProjetc.jar
 &lt;/dependencies&gt;
 </code></pre>
 <h2 class="code-line" data-line-start=103 data-line-end=104 ><a id="Note_103"></a>Note:</h2>
-<p class="has-line-data" data-line-start="104" data-line-end="105">This application is just the backend, if you want frondend go to &lt;here&gt;</p>
+<p class="has-line-data" data-line-start="104" data-line-end="105">This application is just the backend, if you want frondend go to</p>
+<p><a href="https://github.com/ThiagoSalvadorFloripa/taskManagementApp-REACTJS">ACCESS FRONTEND!</a></p>
 <h2 class="code-line" data-line-start=106 data-line-end=107 ><a id="Version_106"></a>Version:</h2>
 <p class="has-line-data" data-line-start="107" data-line-end="108">1.0.0</p>
 <h2 class="code-line" data-line-start=108 data-line-end=109 ><a id="Author_108"></a>Author:</h2>
