@@ -24,12 +24,11 @@ public class DBService {
 	
 	
 	public void instantiateDevDataBase() {
-		Task task0 = new Task(null,"title0", "description", true, new Date(),new Date(),new Date() );
-		Task task1 = new Task(null,"title1", "description", true, new Date(),new Date(),new Date() );
-		Task task2 = new Task(null,"title2", "description", true, new Date(),new Date(),new Date() );
-		Task task3 = new Task(null,"title3", "description", true, new Date(),new Date(),new Date() );
+		Task task1 = new Task(null,"Do backend", "Backend created in spring boot", true, new Date(),null,null );
+		Task task2 = new Task(null,"Do frontend", "Frontend created in React", true, new Date(),null,null );
+		Task task3 = new Task(null,"Do documentation", "Documentation Swagger ", true, new Date(),null,null );
 
-		repository.saveAll(Arrays.asList(task0,task1,task2, task3));
+		repository.saveAll(Arrays.asList(task1,task2, task3));
 		
 		
 		

@@ -7,16 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 /**
- * @author Thiago Salvador - thiago.salvadorpower@gmail.com
- */
-
+* <p>Note:Class responsible for application model of entity
+* </p>
+* 
+* @author Thiago Salvador - thiago.salvadorpower@gmail.com
+*/
 @Entity
 public class Task implements Serializable {
 	
