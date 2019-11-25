@@ -98,6 +98,8 @@ java -jar nameProjetc.jar
 <p class="has-line-data" data-line-start="107" data-line-end="108">1.0.0</p>
 <h2 class="code-line" data-line-start=108 data-line-end=109 ><a id="Author_108"></a>Author:</h2>
 <p class="has-line-data" data-line-start="109" data-line-end="111">Thiago Salvador<br>
-link Mais</p>
+<p><a href="https://www.linkedin.com/in/thiagocostasalvador/">ACCESS!</a></p>
+
+</p>
 <h2 class="code-line" data-line-start=112 data-line-end=113 ><a id="License_112"></a>License:</h2>
 <p class="has-line-data" data-line-start="113" data-line-end="114">The content of this project itself is licensed under the MIT license and intellectual property of the author.</p>
