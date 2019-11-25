@@ -31,7 +31,17 @@ java -jar nameProjetc.jar
 </code></pre>
 <h2 class="code-line" data-line-start=35 data-line-end=36 ><a id="Testing_Application_35"></a>Testing Application:</h2>
 <p class="has-line-data" data-line-start="36" data-line-end="37"><a href="http://localhost:8080/tasks">http://localhost:8080/tasks</a></p>
+<img src="image/ima1.png">
+<img src="image/ima2.png">
 <h2 class="code-line" data-line-start=38 data-line-end=39 ><a id="SWAGGER_Documentation_38"></a>SWAGGER Documentation:</h2>
+<p class="has-line-data" data-line-start="36" data-line-end="37"><a
+ href="http://localhost:8080/swagger-ui.html">http://localhost:8080/swagger-ui.html</a></p>
+<img src="image/ima3.png">
+<img src="image/ima4.png">
+<img src="image/ima5.png">
+
+
+
 <h2 class="code-line" data-line-start=41 data-line-end=42 ><a id="Project_Dependencies_41"></a>Project Dependencies:</h2>
 <pre><code class="has-line-data" data-line-start="43" data-line-end="102" class="language-sh">&lt;dependencies&gt;
     &lt;dependency&gt;
