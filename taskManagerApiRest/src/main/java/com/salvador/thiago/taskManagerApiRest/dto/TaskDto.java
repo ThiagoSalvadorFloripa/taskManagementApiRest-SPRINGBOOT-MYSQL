@@ -11,7 +11,7 @@ import javax.validation.constraints.NotEmpty;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
- * @author Thiago Salvador - thiago.salvadorpower@gmail.com
+ * @author Thiago Salvador - thiago.salvadorpower@gmail.com ----
  */
 
 public class TaskDto implements Serializable {
